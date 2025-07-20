@@ -17,9 +17,9 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #f4f6f8;
+            background-color: #f5f7fa;
             color: #1a1a1a;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         header {
@@ -48,7 +48,7 @@
             border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
         }
 
         h3 {
@@ -56,6 +56,9 @@
             margin-bottom: 1rem;
             font-size: 1.4rem;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .form-group {
@@ -75,10 +78,10 @@
         input[type="number"],
         select {
             width: 100%;
-            padding: 0.8rem;
+            padding: 0.75rem;
             border: 1px solid #d0d5dd;
-            border-radius: 6px;
-            font-size: 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
@@ -92,21 +95,21 @@
         .btn {
             background-color: #004aad;
             color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 0.75rem 1.25rem;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 500;
-            transition: background-color 0.3s;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            min-height: 48px;
+            transition: background-color 0.3s, transform 0.1s;
         }
 
         .btn:hover {
             background-color: #003580;
+            transform: translateY(-1px);
         }
 
         .btn-danger {
@@ -146,54 +149,170 @@
             float: right;
         }
 
-        #comandaList .comanda-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Comanda Styles */
+        .comanda-container {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .comanda-card {
+            background-color: #f9fafb;
+            border-radius: 8px;
             padding: 1rem;
-            border-bottom: 1px solid #e5e7eb;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        #comandaList .comanda-card:last-child {
-            border-bottom: none;
-        }
-
-        #activeComandaItems .sale-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px dashed #e5e7eb;
-            flex-wrap: wrap;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .comanda-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .comanda-card .info {
+            flex: 1;
+        }
+
+        .comanda-card .info span {
+            display: block;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .comanda-card .status {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            color: white;
+            background-color: #28a745;
+            margin-left: 0.5rem;
+        }
+
+        .comanda-card .btn-group {
+            display: flex;
             gap: 0.5rem;
         }
 
-        #activeComandaItems .sale-item:last-child {
+        .comanda-card .btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .active-comanda-header {
+            background-color: #e6f0ff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .active-comanda-items {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+
+        .active-comanda-items table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .active-comanda-items th,
+        .active-comanda-items td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .active-comanda-items th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #004aad;
+        }
+
+        .active-comanda-items tr:last-child td {
             border-bottom: none;
         }
 
-        #currentComandaTotal {
-            font-size: 1.2rem;
+        .comanda-total {
+            font-size: 1.1rem;
             font-weight: 600;
             color: #004aad;
             text-align: right;
-            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            margin-top: 0.5rem;
         }
 
-        #comandaActions {
+        .comanda-actions {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 0.75rem;
             flex-wrap: wrap;
+            margin-top: 1rem;
         }
 
-        #comandaActions button {
+        .comanda-actions .btn {
             flex: 1;
             min-width: 120px;
         }
 
+        /* Closed Comandas */
+        .closed-comanda {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+
+        .closed-comanda-header {
+            padding: 1rem;
+            background-color: #f9fafb;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+
+        .closed-comanda-header:hover {
+            background-color: #e6f0ff;
+        }
+
+        .closed-comanda-header .info span {
+            display: block;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .closed-comanda-details {
+            display: none;
+            padding: 1rem;
+            background-color: #fff;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .closed-comanda-details.show {
+            display: block;
+        }
+
+        .closed-comanda-details ul {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .closed-comanda-details li {
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -203,7 +322,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            padding-top: 20px;
+            padding: 1rem;
             overflow-y: auto;
         }
 
@@ -215,7 +334,6 @@
             width: 90%;
             max-width: 500px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            position: relative;
             animation: slideIn 0.3s ease;
         }
 
@@ -237,76 +355,57 @@
             color: #000;
         }
 
-        #amountGivenContainer {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px dashed #e5e7eb;
-        }
-
-        #changeDue {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #28a745;
-            text-align: center;
+        .error {
+            color: #dc3545;
+            font-size: 0.9rem;
             margin-top: 0.5rem;
+            text-align: center;
         }
 
         .filters {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.75rem;
             background-color: #f9fafb;
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 8px;
         }
 
-        .filters label {
-            font-weight: 500;
-            color: #333;
-        }
-
-        .filters input,
-        .filters select {
+        .filters .form-group {
             flex: 1;
             min-width: 140px;
         }
 
         .sales-summary {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
 
         .summary-card {
-            flex: 1;
-            min-width: 200px;
-            background-color: #ffffff;
+            background-color: #fff;
             border-radius: 8px;
             padding: 1rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-2px);
         }
 
         .summary-card h4 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #004aad;
             margin-bottom: 0.5rem;
         }
 
         .summary-card p {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: #1a1a1a;
-        }
-
-        #saleList .comanda-item {
-            padding: 1rem;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        #saleList .comanda-item:last-child {
-            border-bottom: none;
         }
 
         #productList table {
@@ -332,13 +431,6 @@
             background-color: #f9fafb;
         }
 
-        .error {
-            color: #dc3545;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            text-align: center;
-        }
-
         @media (max-width: 768px) {
             .container {
                 padding: 0 0.5rem;
@@ -348,25 +440,25 @@
                 padding: 1rem;
             }
 
+            .comanda-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .comanda-actions {
+                flex-direction: column;
+            }
+
+            .comanda-actions .btn {
+                width: 100%;
+            }
+
             .filters {
                 flex-direction: column;
             }
 
-            #comandaActions {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            #comandaList .comanda-card,
-            #activeComandaItems .sale-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            #productList table {
+            .active-comanda-items table {
                 display: block;
                 overflow-x: auto;
                 white-space: nowrap;
@@ -410,31 +502,30 @@
             <h3><i class="fas fa-utensils"></i> Gerenciar Comandas</h3>
             <div class="form-group">
                 <label for="comandaInput">Nova Comanda (Mesa/Cliente)</label>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
                     <input type="text" id="comandaInput" placeholder="Ex: Mesa 1 ou Nome do Cliente">
                     <button id="createComandaBtn" class="btn"><i class="fas fa-plus"></i> Criar Comanda</button>
                 </div>
-                <p style="font-size: 0.9rem; color: #666;">Insira o identificador da comanda e clique em "Criar Comanda".</p>
+                <p style="font-size: 0.85rem; color: #666;">Insira o identificador da comanda e clique em "Criar Comanda".</p>
             </div>
 
-            <h3>Comandas Abertas</h3>
-            <div id="comandaList">
+            <h3><i class="fas fa-clipboard-list"></i> Comandas Abertas</h3>
+            <div id="comandaList" class="comanda-container">
                 <p>Nenhuma comanda aberta.</p>
             </div>
 
-            <h3>Adicionar Itens à Comanda Selecionada</h3>
+            <h3><i class="fas fa-cart-plus"></i> Comanda Ativa</h3>
+            <div id="activeComandaHeader" style="display: none;"></div>
+            <div id="activeComandaItems" class="active-comanda-items">
+                <p>Selecione ou crie uma comanda para adicionar itens.</p>
+            </div>
+            <div id="currentComandaTotal" class="comanda-total">Total: R$ 0,00</div>
             <div class="form-group">
                 <label for="barcodeInput">Código de Barras ou Gramatura</label>
                 <input type="text" id="barcodeInput" placeholder="Ex: 150 * para gramatura, 2#123456 para unidades ou código do produto" autofocus>
-                <p style="font-size: 0.9rem; color: #666;">Pressione <strong>Enter</strong> após inserir a gramatura ou código.</p>
+                <p style="font-size: 0.85rem; color: #666;">Pressione <strong>Enter</strong> após inserir a gramatura ou código.</p>
             </div>
-
-            <div id="activeComandaItems">
-                <p>Selecione ou crie uma comanda para adicionar itens.</p>
-            </div>
-            <div id="currentComandaTotal">Total: R$ 0,00</div>
-
-            <div id="comandaActions">
+            <div id="comandaActions" class="comanda-actions">
                 <button id="finalizarComandaBtn" class="btn btn-success" disabled><i class="fas fa-check"></i> Fechar Comanda</button>
                 <button id="cancelComandaBtn" class="btn btn-secondary"><i class="fas fa-times"></i> Cancelar Comanda</button>
             </div>
@@ -474,9 +565,21 @@
                     <span class="close-button" onclick="closeRemoveItemModal()">×</span>
                     <h3><i class="fas fa-exclamation-triangle"></i> Confirmar Remoção</h3>
                     <p>Tem certeza que deseja remover <strong id="removeItemName">Item</strong> da comanda?</p>
-                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
                         <button id="confirmRemoveItemBtn" class="btn btn-danger"><i class="fas fa-trash"></i> Sim</button>
                         <button id="cancelRemoveItemBtn" class="btn btn-secondary"><i class="fas fa-times"></i> Não</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="deleteComandaModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button" onclick="closeDeleteComandaModal()">×</span>
+                    <h3><i class="fas fa-exclamation-triangle"></i> Confirmar Exclusão</h3>
+                    <p>Tem certeza que deseja excluir a comanda <strong id="deleteComandaName">Comanda</strong>?</p>
+                    <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+                        <button id="confirmDeleteComandaBtn" class="btn btn-danger"><i class="fas fa-trash"></i> Sim</button>
+                        <button id="cancelDeleteComandaBtn" class="btn btn-secondary"><i class="fas fa-times"></i> Não</button>
                     </div>
                 </div>
             </div>
@@ -522,7 +625,7 @@
                 <button id="exportPDFBtn" class="btn"><i class="fas fa-file-pdf"></i> Exportar PDF</button>
                 <button id="shareWhatsAppBtn" class="btn"><i class="fab fa-whatsapp"></i> Enviar WhatsApp</button>
             </div>
-            <div id="saleList">
+            <div id="saleList" class="comanda-container">
                 <p>Nenhuma comanda fechada encontrada.</p>
             </div>
 
@@ -555,7 +658,7 @@
                 <button id="addProductBtn" class="btn"><i class="fas fa-save"></i> Salvar Produto</button>
             </div>
 
-            <h3>Produtos Cadastrados</h3>
+            <h3><i class="fas fa-box-open"></i> Produtos Cadastrados</h3>
             <div id="productList">
                 <p>Nenhum produto cadastrado.</p>
             </div>
@@ -606,6 +709,7 @@
         let tempWeight = null;
         let appliedDiscount = 0;
         let itemToRemove = null;
+        let comandaToDelete = null;
 
         document.getElementById("barcodeInput").focus();
 
@@ -823,13 +927,18 @@
 
             openComandas.forEach(comanda => {
                 const total = comanda.items ? comanda.items.reduce((sum, item) => sum + item.preco, 0) : 0;
+                const itemCount = comanda.items ? comanda.items.length : 0;
                 const comandaDiv = document.createElement("div");
                 comandaDiv.className = "comanda-card";
                 comandaDiv.innerHTML = `
-                    <span><strong>Comanda:</strong> ${comanda.identificador} (Total: R$ ${total.toFixed(2).replace('.', ',')})</span>
-                    <div>
+                    <div class="info">
+                        <span><strong>Comanda:</strong> ${comanda.identificador} <span class="status">Aberta</span></span>
+                        <span><strong>Total:</strong> R$ ${total.toFixed(2).replace('.', ',')}</span>
+                        <span><strong>Itens:</strong> ${itemCount}</span>
+                    </div>
+                    <div class="btn-group">
                         <button class="btn" onclick="selectComanda('${comanda.id}')"><i class="fas fa-edit"></i> Selecionar</button>
-                        <button class="btn btn-danger" onclick="deleteComanda('${comanda.id}')"><i class="fas fa-trash"></i> Excluir</button>
+                        <button class="btn btn-danger" onclick="openDeleteComandaModal('${comanda.id}', '${comanda.identificador}')"><i class="fas fa-trash"></i> Excluir</button>
                     </div>
                 `;
                 comandaListDiv.appendChild(comandaDiv);
@@ -843,30 +952,48 @@
             document.getElementById("barcodeInput").focus();
         };
 
-        window.deleteComanda = (comandaId) => {
-            if (confirm("Tem certeza que deseja excluir esta comanda?")) {
+        window.openDeleteComandaModal = (comandaId, identificador) => {
+            comandaToDelete = comandaId;
+            document.getElementById("deleteComandaName").textContent = identificador;
+            document.getElementById("deleteComandaModal").style.display = "block";
+        };
+
+        window.closeDeleteComandaModal = () => {
+            document.getElementById("deleteComandaModal").style.display = "none";
+            comandaToDelete = null;
+            document.getElementById("barcodeInput").focus();
+        };
+
+        document.getElementById("confirmDeleteComandaBtn").onclick = () => {
+            if (comandaToDelete) {
                 const user = auth.currentUser;
                 if (user) {
-                    const comandaRef = ref(db, `comandas/${user.uid}/${comandaId}`);
+                    const comandaRef = ref(db, `comandas/${user.uid}/${comandaToDelete}`);
                     remove(comandaRef)
                         .then(() => {
                             alert("Comanda excluída com sucesso!");
-                            if (activeComanda && activeComanda.id === comandaId) {
+                            if (activeComanda && activeComanda.id === comandaToDelete) {
                                 cancelActiveComanda();
                             }
+                            document.getElementById("deleteComandaModal").style.display = "none";
+                            comandaToDelete = null;
                         })
                         .catch(err => showError("Erro ao excluir comanda: " + err.message, "saleSection"));
                 }
             }
         };
 
-        window.deleteClosedComanda = (comandaId) => {
+        document.getElementById("cancelDeleteComandaBtn").onclick = () => {
+            closeDeleteComandaModal();
+        };
+
+        window.deleteClosedComanda = (comandaId, identificador) => {
             const comanda = allComandasData.find(c => c.id === comandaId);
             if (!comanda) {
                 showError("Comanda não encontrada.", "saleSection");
                 return;
             }
-            if (confirm(`Tem certeza que deseja excluir a comanda fechada ${comanda.identificador}? Estoque será atualizado.`)) {
+            if (confirm(`Tem certeza que deseja excluir a comanda fechada ${identificador}? Estoque será atualizado.`)) {
                 const user = auth.currentUser;
                 if (user) {
                     const updates = {};
@@ -1119,35 +1246,62 @@
         };
 
         function updateActiveComandaDisplay() {
+            const headerDiv = document.getElementById("activeComandaHeader");
             const itemListDiv = document.getElementById("activeComandaItems");
             itemListDiv.innerHTML = "";
             let currentTotal = 0;
 
             if (!activeComanda) {
+                headerDiv.style.display = "none";
                 itemListDiv.innerHTML = "<p>Selecione ou crie uma comanda para adicionar itens.</p>";
                 document.getElementById("currentComandaTotal").textContent = "Total: R$ 0,00";
                 document.getElementById("finalizarComandaBtn").disabled = true;
                 return;
             }
 
+            headerDiv.style.display = "flex";
+            headerDiv.innerHTML = `
+                <span>Comanda Ativa: ${activeComanda.identificador} <span class="status">Aberta</span></span>
+                <span>Itens: ${activeComandaItems.length} | Total: R$ ${activeComandaItems.reduce((sum, item) => sum + item.preco, 0).toFixed(2).replace('.', ',')}</span>
+            `;
+
             if (activeComandaItems.length === 0) {
                 itemListDiv.innerHTML = "<p>Nenhum item adicionado à comanda selecionada.</p>";
             } else {
-                activeComandaItems.forEach(item => {
-                    const itemDiv = document.createElement("div");
-                    itemDiv.className = "sale-item";
-                    const quantidadeDisplay = item.unidade === 'kilo' ?
-                        `${(item.quantidade * 1000).toFixed(0)}g` :
-                        `${item.quantidade} un`;
-                    itemDiv.innerHTML = `
-                        <span>${item.numero}. ${item.nome} (${quantidadeDisplay}) - R$ ${item.preco.toFixed(2).replace('.', ',')}</span>
-                        <button class="btn btn-danger" onclick="removeItemFromActiveComanda(${item.numero})"><i class="fas fa-trash"></i> Remover</button>
-                    `;
-                    itemListDiv.appendChild(itemDiv);
-                    currentTotal += item.preco;
-                });
+                const table = document.createElement("table");
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Preço</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${activeComandaItems.map(item => {
+                            const quantidadeDisplay = item.unidade === 'kilo' ?
+                                `${(item.quantidade * 1000).toFixed(0)}g` :
+                                `${item.quantidade} un`;
+                            currentTotal += item.preco;
+                            return `
+                                <tr>
+                                    <td>${item.numero}</td>
+                                    <td>${item.nome}</td>
+                                    <td>${quantidadeDisplay}</td>
+                                    <td>R$ ${item.preco.toFixed(2).replace('.', ',')}</td>
+                                    <td>
+                                        <button class="btn btn-danger" onclick="removeItemFromActiveComanda(${item.numero})"><i class="fas fa-trash"></i> Remover</button>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                `;
+                itemListDiv.appendChild(table);
             }
-            document.getElementById("currentComandaTotal").textContent = `R$ ${currentTotal.toFixed(2).replace('.', ',')}`;
+            document.getElementById("currentComandaTotal").textContent = `Total: R$ ${currentTotal.toFixed(2).replace('.', ',')}`;
             document.getElementById("finalizarComandaBtn").disabled = activeComandaItems.length === 0;
         }
 
@@ -1314,7 +1468,9 @@
             tempWeight = null;
             appliedDiscount = 0;
             itemToRemove = null;
+            comandaToDelete = null;
             document.getElementById("removeItemModal").style.display = "none";
+            document.getElementById("deleteComandaModal").style.display = "none";
             updateActiveComandaDisplay();
             document.getElementById("barcodeInput").value = "";
             document.getElementById("barcodeInput").placeholder = "Ex: 150 * para gramatura, 2#123456 para unidades ou código do produto";
@@ -1378,24 +1534,33 @@
             if (filteredComandasData.length > 0) {
                 filteredComandasData.forEach(comanda => {
                     const div = document.createElement("div");
-                    div.className = "comanda-item";
+                    div.className = "closed-comanda";
                     const itemsList = comanda.items && comanda.items.length > 0 ?
                         comanda.items.map(item => {
                             const quantidadeDisplay = item.unidade === 'kilo' ?
                                 `${(item.quantidade * 1000).toFixed(0)}g` :
                                 `${item.quantidade} un`;
                             return `<li>${item.nome} (${quantidadeDisplay}, R$ ${item.preco.toFixed(2).replace('.', ',')})</li>`;
-                        }).join('') : '';
+                        }).join('') : '<li>Nenhum item</li>';
                     const discountInfo = comanda.desconto > 0 ?
-                        `<br><strong>Desconto:</strong> R$ ${comanda.desconto.toFixed(2).replace('.', ',')}` : '';
+                        `<span><strong>Desconto:</strong> R$ ${comanda.desconto.toFixed(2).replace('.', ',')}</span>` : '';
                     div.innerHTML = `
-                        <strong>Comanda:</strong> ${comanda.identificador}<br>
-                        <strong>Data/Hora Fechamento:</strong> ${comanda.dataFechamento ? new Date(comanda.dataFechamento).toLocaleString('pt-BR') : 'N/A'}<br>
-                        <strong>Valor Total:</strong> R$ ${comanda.valorTotal ? comanda.valorTotal.toFixed(2).replace('.', ',') : '0,00'}<br>
-                        ${discountInfo}
-                        <strong>Tipo de Pagamento:</strong> ${comanda.tipoPagamento}<br>
-                        ${itemsList ? `<strong>Itens:</strong><ul>${itemsList}</ul>` : ''}
-                        <button class="btn btn-danger" onclick="deleteClosedComanda('${comanda.id}')"><i class="fas fa-trash"></i> Excluir Comanda</button>
+                        <div class="closed-comanda-header" onclick="toggleComandaDetails(this)">
+                            <div class="info">
+                                <span><strong>Comanda:</strong> ${comanda.identificador}</span>
+                                <span><strong>Data:</strong> ${comanda.dataFechamento ? new Date(comanda.dataFechamento).toLocaleString('pt-BR') : 'N/A'}</span>
+                                <span><strong>Total:</strong> R$ ${comanda.valorTotal ? comanda.valorTotal.toFixed(2).replace('.', ',') : '0,00'}</span>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-danger" onclick="event.stopPropagation(); deleteClosedComanda('${comanda.id}', '${comanda.identificador}')"><i class="fas fa-trash"></i> Excluir</button>
+                            </div>
+                        </div>
+                        <div class="closed-comanda-details">
+                            <span><strong>Pagamento:</strong> ${comanda.tipoPagamento}</span>
+                            ${discountInfo}
+                            <strong>Itens:</strong>
+                            <ul>${itemsList}</ul>
+                        </div>
                     `;
                     container.appendChild(div);
                 });
@@ -1403,6 +1568,11 @@
                 container.innerHTML = "<p>Nenhuma comanda fechada encontrada com os filtros aplicados.</p>";
             }
         }
+
+        window.toggleComandaDetails = (element) => {
+            const details = element.nextElementSibling;
+            details.classList.toggle('show');
+        };
 
         document.getElementById("exportExcelBtn").onclick = () => {
             if (filteredComandasData.length === 0) {
